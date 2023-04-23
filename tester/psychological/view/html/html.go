@@ -2,7 +2,7 @@ package html
 
 import (
 	"embed"
-	"io"
+	"strings"
 	"text/template"
 )
 
@@ -18,8 +18,14 @@ type ResultParams struct {
 	Message string
 }
 
-func Result(w io.Writer, p ResultParams) error {
-	return result.
+func Result(p ResultParams) (*string, error) {
+	var content strings.Builder
+	err := result.Execute(&content, p)
+	if err != nil {
+		return nil, err
+	}
+	output := content.String()
+	return &output, nil
 }
 
 type ProfileShowParams struct {
