@@ -4,15 +4,20 @@ import (
 	"context"
 	"fmt"
 	"github.com/aws/aws-lambda-go/events"
+	"tester/psychological/tester/psychological/internal/analysis"
 	"tester/psychological/tester/psychological/view/html"
 )
 
 func GetSurveyResult(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	// TODO: parse surveyType
 	surveyInput := request.QueryStringParameters["survey_input"]
+	surveyType := request.QueryStringParameters["survey_type"]
+
+	surveyResult := analysis.GetAnalysisResult(surveyType, surveyInput)
+
 	p := html.ResultParams{
 		Title:   "설문 결과",
-		Message: fmt.Sprintf("당신은 %s 타입입니다!", surveyInput),
+		Message: fmt.Sprintf("당신은 %s 타입입니다!", surveyResult),
 	}
 
 	output, err := html.Result(p)
