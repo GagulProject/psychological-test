@@ -1,13 +1,9 @@
 package mbti
 
-import (
-	"errors"
-)
-
 // GetBloodType 두 문자 를 정렬하여 BloodType 정보를 리턴한다.
-func GetMBTIType(surveyInput []string) (string, error) {
+func GetMBTIType(surveyInput []string) string {
 
-	return "", errors.New("can't find blood type")
+	return ""
 }
 
 type MBTIType string

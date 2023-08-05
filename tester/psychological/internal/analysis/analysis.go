@@ -10,15 +10,15 @@ func GetAnalysisResult(surveyType string, surveyInput string) string {
 }
 
 func analysisAlgo(surveyType string, surveyAnswer []string) string {
-	var errorLog error
 	var analysisResult string
+
 	switch surveyType {
 	case "blood":
-		analysisResult, errorLog = blood.GetBloodType(surveyAnswer)
+		analysisResult = blood.GetBloodType(surveyAnswer)
 	case "mbti":
-		analysisResult, errorLog = mbti.GetMBTIType(surveyAnswer)
+		analysisResult = mbti.GetMBTIType(surveyAnswer)
 	default:
-		analysisResult, errorLog = "Wrong Type", errorLog
+		analysisResult = "Wrong Type"
 	}
 	/*
 		typeFunc := map[string]interface{}{
