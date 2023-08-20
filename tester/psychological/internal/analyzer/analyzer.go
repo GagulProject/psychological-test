@@ -1,4 +1,4 @@
-package analysis
+package analyzer
 
 import (
 	"tester/psychological/tester/psychological/internal/survey/custom/blood"
@@ -6,10 +6,10 @@ import (
 )
 
 func GetAnalysisResult(surveyType string, surveyInput string) string {
-	return analysisAlgo(surveyType, splitString(surveyInput))
+	return AnalysisAlgo(surveyType, splitString(surveyInput))
 }
 
-func analysisAlgo(surveyType string, surveyAnswer []string) string {
+func AnalysisAlgo(surveyType string, surveyAnswer []string) string {
 	var analysisResult string
 
 	switch surveyType {
