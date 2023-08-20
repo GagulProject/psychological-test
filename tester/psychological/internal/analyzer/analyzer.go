@@ -5,11 +5,13 @@ import (
 	"tester/psychological/tester/psychological/internal/survey/custom/mbti"
 )
 
-func GetAnalysisResult(surveyType string, surveyInput string) string {
-	return AnalysisAlgo(surveyType, splitString(surveyInput))
+func GetAnalyzeResult(surveyType string, surveyInput string) string {
+	parseInputs := ParseInput(surveyInput)
+
+	return Analyze(surveyType, parseInputs)
 }
 
-func AnalysisAlgo(surveyType string, surveyAnswer []string) string {
+func Analyze(surveyType string, surveyAnswer []string) string {
 	var analysisResult string
 
 	switch surveyType {
@@ -20,16 +22,13 @@ func AnalysisAlgo(surveyType string, surveyAnswer []string) string {
 	default:
 		analysisResult = "Wrong Type"
 	}
-	/*
-		typeFunc := map[string]interface{}{
-			"blood": blood.GetBloodType(surveyAnswer),
-			"mbti":  mbti.GetMBTIType(surveyAnswer),
-		}
-	*/
+
+	//추후 swtich 문이 아닌 Map 형식으로 변환예정.
+
 	return analysisResult
 }
 
-func splitString(surveyInput string) []string {
+func ParseInput(surveyInput string) []string {
 	surveyData := make([]string, len(surveyInput))
 
 	for i, r := range surveyInput {

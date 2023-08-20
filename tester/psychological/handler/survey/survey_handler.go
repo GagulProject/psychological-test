@@ -13,7 +13,7 @@ func GetSurveyResult(ctx context.Context, request events.APIGatewayProxyRequest)
 	surveyInput := request.QueryStringParameters["survey_input"]
 	surveyType := request.QueryStringParameters["survey_type"]
 
-	surveyResult := analyzer.GetAnalysisResult(surveyType, surveyInput)
+	surveyResult := analyzer.GetAnalyzeResult(surveyType, surveyInput)
 
 	p := html.ResultParams{
 		Title:   "설문 결과",
