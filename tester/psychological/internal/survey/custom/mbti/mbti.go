@@ -5,12 +5,3 @@ func GetMBTIType(surveyInput []string) string {
 
 	return "INFJ"
 }
-
-type MBTIType string
-
-const (
-	INFJ MBTIType = "A"
-	B    MBTIType = "B"
-	AB   MBTIType = "AB"
-	O    MBTIType = "O"
-)
