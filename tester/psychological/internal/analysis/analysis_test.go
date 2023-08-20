@@ -1,24 +1,47 @@
 package analysis
 
 import (
+	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
-func TestanalysisAlgo(s testing.F, b testing.B) string {
-	surveyType := "blood"
-	surveyAnswer := []string{"1", "2", "3"}
-	analysisAlgo(surveyType, surveyAnswer)
+func TestGetAnalysisResult(T *testing.T) {
+	surveyType := "mbti"
+	surveyInput := "1234"
+	result := GetAnalysisResult(surveyType, surveyInput)
+	assert.Equal(T, "INFJ", result)
 
-	assert.Nil(s.T())
-	assert.NotNil(s.T(), *output)
+	surveyType = "blood"
+	surveyInput = "AB"
+	result = GetAnalysisResult(surveyType, surveyInput)
+	assert.Equal(T, "AB", result)
+
+	surveyType = "akgj"
+	result = GetAnalysisResult(surveyType, surveyInput)
+	assert.Equal(T, "Wrong Type", result)
+
 }
 
-func TestsplitString(T testing.T) []string {
-	surveyData := make([]string, len(surveyInput))
+func TestanalysisAlgo(T *testing.T) {
+	surveyType := "mbti"
+	surveyInput := []string{"A", "B", "C"}
+	result := analysisAlgo(surveyType, surveyInput)
+	assert.Equal(T, "INFJ", result)
 
-	for i, r := range surveyInput {
-		surveyData[i] = string(r)
-	}
+	surveyType = "blood"
+	surveyInput = []string{"A", "B"}
+	result = analysisAlgo(surveyType, surveyInput)
+	assert.Equal(T, "AB", result)
 
-	return surveyData
+	surveyType = "akgj"
+	result = analysisAlgo(surveyType, surveyInput)
+	assert.Equal(T, "Wrong Type", result)
+}
+
+func TestsplitString(T *testing.T) {
+	surveyAnswer := splitString("1234")
+	assert.Equal(T, []string{"1", "2", "3", "4"}, surveyAnswer)
+
+	surveyAnswer = splitString("wioeyr29")
+	assert.Equal(T, []string{"w", "i", "o", "e", "y", "r", "2", "9"}, surveyAnswer)
 }
