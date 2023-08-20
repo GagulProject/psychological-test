@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/aws/aws-lambda-go/events"
-	"tester/psychological/tester/psychological/internal/analysis"
+	"tester/psychological/tester/psychological/internal/analyzer"
 	"tester/psychological/tester/psychological/view/html"
 )
 
@@ -13,7 +13,7 @@ func GetSurveyResult(ctx context.Context, request events.APIGatewayProxyRequest)
 	surveyInput := request.QueryStringParameters["survey_input"]
 	surveyType := request.QueryStringParameters["survey_type"]
 
-	surveyResult := analysis.GetAnalysisResult(surveyType, surveyInput)
+	surveyResult := analyzer.GetAnalysisResult(surveyType, surveyInput)
 
 	p := html.ResultParams{
 		Title:   "설문 결과",

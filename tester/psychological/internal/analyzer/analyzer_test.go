@@ -1,4 +1,4 @@
-package analysis
+package analyzer
 
 import (
 	"github.com/stretchr/testify/assert"
@@ -22,19 +22,19 @@ func TestGetAnalysisResult(T *testing.T) {
 
 }
 
-func TestanalysisAlgo(T *testing.T) {
+func TestAnalysisAlgo(T *testing.T) {
 	surveyType := "mbti"
 	surveyInput := []string{"A", "B", "C"}
-	result := analysisAlgo(surveyType, surveyInput)
+	result := AnalysisAlgo(surveyType, surveyInput)
 	assert.Equal(T, "INFJ", result)
 
 	surveyType = "blood"
 	surveyInput = []string{"A", "B"}
-	result = analysisAlgo(surveyType, surveyInput)
+	result = AnalysisAlgo(surveyType, surveyInput)
 	assert.Equal(T, "AB", result)
 
 	surveyType = "akgj"
-	result = analysisAlgo(surveyType, surveyInput)
+	result = AnalysisAlgo(surveyType, surveyInput)
 	assert.Equal(T, "Wrong Type", result)
 }
 
