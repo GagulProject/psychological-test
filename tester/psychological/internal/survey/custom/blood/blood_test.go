@@ -6,26 +6,21 @@ import (
 )
 
 func TestGetBloodType(t *testing.T) {
-	bloodType, err := GetBloodType("A", "B")
-	assert.Nil(t, err)
+	bloodType := GetBloodType([]string{"A", "B"})
 	assert.Equal(t, AB, bloodType)
 
-	bloodType, err = GetBloodType("B", "A")
-	assert.Nil(t, err)
+	bloodType = GetBloodType([]string{"B", "A"})
 	assert.Equal(t, AB, bloodType)
 
-	bloodType, err = GetBloodType("A", "O")
-	assert.Nil(t, err)
+	bloodType = GetBloodType([]string{"A", "O"})
 	assert.Equal(t, A, bloodType)
 
-	bloodType, err = GetBloodType("O", "A")
-	assert.Nil(t, err)
+	bloodType = GetBloodType([]string{"O", "A"})
 	assert.Equal(t, A, bloodType)
 
-	bloodType, err = GetBloodType("O", "O")
+	bloodType = GetBloodType([]string{"O", "O"})
 	assert.Equal(t, O, bloodType)
 
-	bloodType, err = GetBloodType("G", "A")
-	assert.NotNil(t, err)
-	assert.EqualError(t, err, "can't find blood type")
+	bloodType = GetBloodType([]string{"G", "A"})
+	assert.Equal(t, "", bloodType)
 }
