@@ -6,7 +6,7 @@ import (
 )
 
 func GetAnalyzeResult(surveyType string, surveyInput string) string {
-	parseInputs := ParseInput(surveyInput)
+	parseInputs := parseInput(surveyInput)
 
 	return Analyze(surveyType, parseInputs)
 }
@@ -28,7 +28,7 @@ func Analyze(surveyType string, surveyAnswer []string) string {
 	return analysisResult
 }
 
-func ParseInput(surveyInput string) []string {
+func parseInput(surveyInput string) []string {
 	surveyData := make([]string, len(surveyInput))
 
 	for i, r := range surveyInput {
