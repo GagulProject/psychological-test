@@ -37,10 +37,10 @@ func TestAnalye(T *testing.T) {
 	assert.Equal(T, "Wrong Type", result)
 }
 
-func TestParseInput(T *testing.T) {
-	surveyAnswer := ParseInput("1234")
+func TestparseInput(T *testing.T) {
+	surveyAnswer := parseInput("1234")
 	assert.Equal(T, []string{"1", "2", "3", "4"}, surveyAnswer)
 
-	surveyAnswer = ParseInput("wioeyr29")
+	surveyAnswer = parseInput("wioeyr29")
 	assert.Equal(T, []string{"w", "i", "o", "e", "y", "r", "2", "9"}, surveyAnswer)
 }
