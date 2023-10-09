@@ -24,16 +24,16 @@ func TestGetAnalyseResult(T *testing.T) {
 func TestAnalye(T *testing.T) {
 	surveyType := "mbti"
 	surveyInput := []string{"A", "B", "C"}
-	result := Analyze(surveyType, surveyInput)
+	result := analyze(surveyType, surveyInput)
 	assert.Equal(T, "INFJ", result)
 
 	surveyType = "blood"
 	surveyInput = []string{"A", "B"}
-	result = Analyze(surveyType, surveyInput)
+	result = analyze(surveyType, surveyInput)
 	assert.Equal(T, "AB", result)
 
 	surveyType = "akgj"
-	result = Analyze(surveyType, surveyInput)
+	result = analyze(surveyType, surveyInput)
 	assert.Equal(T, "Wrong Type", result)
 }
 
