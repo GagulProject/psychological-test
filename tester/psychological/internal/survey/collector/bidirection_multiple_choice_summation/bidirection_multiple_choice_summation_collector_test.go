@@ -7,11 +7,11 @@ import (
 
 func TestGetType(t *testing.T) {
 	options, _ := getOptions("mbti")
-	var answers []string
-	for i, v := range options {
-		answers[i] = v.YesValue
+	answers := make([]string, len(options))
+	for i := range options {
+		answers[i] = "N"
 	}
 	typ, err := GetType("mbti", answers)
 	assert.NoError(t, err)
-	assert.Equal(t, "INFJ", typ)
+	assert.Equal(t, "INTP", typ)
 }
