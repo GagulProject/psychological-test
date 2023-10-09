@@ -7,20 +7,20 @@ import (
 
 func TestGetBloodType(t *testing.T) {
 	bloodType := GetBloodType([]string{"A", "B"})
-	assert.Equal(t, AB, bloodType)
+	assert.Equal(t, string(AB), bloodType)
 
 	bloodType = GetBloodType([]string{"B", "A"})
-	assert.Equal(t, AB, bloodType)
+	assert.Equal(t, string(AB), bloodType)
 
 	bloodType = GetBloodType([]string{"A", "O"})
-	assert.Equal(t, A, bloodType)
+	assert.Equal(t, string(A), bloodType)
 
 	bloodType = GetBloodType([]string{"O", "A"})
-	assert.Equal(t, A, bloodType)
+	assert.Equal(t, string(A), bloodType)
 
 	bloodType = GetBloodType([]string{"O", "O"})
-	assert.Equal(t, O, bloodType)
+	assert.Equal(t, string(O), bloodType)
 
 	bloodType = GetBloodType([]string{"G", "A"})
-	assert.Equal(t, "", bloodType)
+	assert.Equal(t, string(UNKNOWN), bloodType)
 }

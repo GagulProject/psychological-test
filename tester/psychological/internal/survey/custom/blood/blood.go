@@ -9,30 +9,31 @@ func GetBloodType(chromosome []string) string {
 	sort.Strings(chromosome)
 
 	if chromosome[0] == "O" && chromosome[1] == "O" {
-		return "O"
+		return string(O)
 	}
 	if chromosome[0] == "A" {
 		if chromosome[1] == "B" {
-			return "AB"
+			return string(AB)
 		}
 		if chromosome[1] == "A " || chromosome[1] == "O" {
-			return "A"
+			return string(A)
 		}
 	}
 	if chromosome[0] == "B" {
 		if chromosome[1] == "B " || chromosome[1] == "O" {
-			return "B"
+			return string(B)
 		}
 	}
 
-	return ""
+	return string(UNKNOWN)
 }
 
 type BloodType string
 
 const (
-	A  BloodType = "A"
-	B  BloodType = "B"
-	AB BloodType = "AB"
-	O  BloodType = "O"
+	A       BloodType = "A"
+	B       BloodType = "B"
+	AB      BloodType = "AB"
+	O       BloodType = "O"
+	UNKNOWN BloodType = ""
 )
