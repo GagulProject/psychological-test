@@ -8,23 +8,22 @@ import (
 func GetAnalyzeResult(surveyType string, surveyInput string) string {
 	parseInputs := parseInput(surveyInput)
 
-	return Analyze(surveyType, parseInputs)
+	return analyze(surveyType, parseInputs)
 }
 
-func Analyze(surveyType string, surveyAnswer []string) string {
+func analyze(surveyType string, surveyAnswer []string) string {
 	var analysisResult string
 
 	switch surveyType {
 	case "blood":
 		analysisResult = blood.GetBloodType(surveyAnswer)
 	case "mbti":
-		analysisResult = mbti.GetMBTIType(surveyAnswer)
+		analysisResult = mbti.GetType(surveyAnswer)
 	default:
 		analysisResult = "Wrong Type"
 	}
 
-	//추후 swtich 문이 아닌 Map 형식으로 변환예정.
-
+	//TODO: 추후 swtich 문이 아닌 Map 형식으로 변환예정
 	return analysisResult
 }
 

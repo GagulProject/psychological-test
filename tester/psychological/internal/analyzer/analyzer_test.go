@@ -2,14 +2,17 @@ package analyzer
 
 import (
 	"github.com/stretchr/testify/assert"
+	"strings"
+	"tester/psychological/tester/psychological/internal/survey/database/bidirection_multiple_choice_summation/mbti"
 	"testing"
 )
 
 func TestGetAnalyseResult(T *testing.T) {
 	surveyType := "mbti"
-	surveyInput := "1234"
+	surveyInputLength := len(mbti.GetOptions())
+	surveyInput := strings.Repeat("Y", surveyInputLength)
 	result := GetAnalyzeResult(surveyType, surveyInput)
-	assert.Equal(T, "INFJ", result)
+	assert.Equal(T, "ESFJ", result)
 
 	surveyType = "blood"
 	surveyInput = "AB"
@@ -21,23 +24,7 @@ func TestGetAnalyseResult(T *testing.T) {
 	assert.Equal(T, "Wrong Type", result)
 }
 
-func TestAnalye(T *testing.T) {
-	surveyType := "mbti"
-	surveyInput := []string{"A", "B", "C"}
-	result := Analyze(surveyType, surveyInput)
-	assert.Equal(T, "INFJ", result)
-
-	surveyType = "blood"
-	surveyInput = []string{"A", "B"}
-	result = Analyze(surveyType, surveyInput)
-	assert.Equal(T, "AB", result)
-
-	surveyType = "akgj"
-	result = Analyze(surveyType, surveyInput)
-	assert.Equal(T, "Wrong Type", result)
-}
-
-func TestparseInput(T *testing.T) {
+func TestParseInput(T *testing.T) {
 	surveyAnswer := parseInput("1234")
 	assert.Equal(T, []string{"1", "2", "3", "4"}, surveyAnswer)
 
