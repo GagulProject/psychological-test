@@ -6,6 +6,9 @@ import (
 	bmcs "tester/psychological/tester/psychological/internal/survey/model/bidirection_multiple_choice_summation"
 )
 
+const YesValue = "Y"
+const NoValue = "N"
+
 func GetType(dataName string, answer []string) (string, error) {
 	options, err := getOptions(dataName)
 	if err != nil {
@@ -15,7 +18,7 @@ func GetType(dataName string, answer []string) (string, error) {
 	answers := make(map[string]int)
 
 	for i := range options {
-		if answer[i] == "Y" {
+		if answer[i] == YesValue {
 			answers[options[i].YesValue]++
 		} else {
 			answers[options[i].NoValue]++
