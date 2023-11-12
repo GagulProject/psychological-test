@@ -32,5 +32,6 @@ jobs:
           zip_file: deployment.zip
           memory_size: 128
           timeout: 10
+          role: arn:aws:iam::036440956055:role/service-role/firstFunc-role-hqwrasyf
           runtime: nodejs12.x
 
