@@ -2,6 +2,8 @@ name : Deploy to lambda
 on:
   push:
     branches: [ "deploy" ]
+  pull_request:
+    branches: [ "main" ] # for test purpose
 
 jobs:
   build:
