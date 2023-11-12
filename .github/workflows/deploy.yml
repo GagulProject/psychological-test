@@ -28,7 +28,7 @@ jobs:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: "ap-northeast-2"
-          function_name: gorush
+          function_name: my-go-lambda-function
           zip_file: deployment.zip
           memory_size: 128
           timeout: 10
